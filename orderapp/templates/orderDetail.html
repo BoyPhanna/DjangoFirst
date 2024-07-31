@@ -1,0 +1,50 @@
+
+{% extends "layout.html" %}
+{% load humanize %}
+
+{% block title %}
+ព័រមានលំអិត
+{% endblock %}
+
+{% block content %}
+    <!-- เนื้อหา (Content) -->
+    <section class="content2 cid-tsEQSCqggh" id="content2-2">
+        <div class="container my-5">
+            <div class="mbr-section-head">
+                <h4 class="mbr-section-title mbr-fonts-style align-start mb-0 display-2">
+                    <strong>អត្ដលេខវិក្កយប័ត្រ​ #{{order.id}}</strong>
+                </h4>
+            </div>
+            <div class="row my-5">
+                <table class="table text-center table-bordered my-5">
+                    <thead>
+                      <tr>
+                        <th scope="col">ឈ្មោះផលិតផល</th>
+                        <th scope="col">តម្លៃ</th>
+                        <th scope="col">ចំនួន</th>
+                        <th scope="col">សរុបទឹកប្រាក់</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order_items %}
+                        <tr>
+                            <td>{{item.product}}</td>
+                            <td>{{item.price | intcomma}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.sub_total | intcomma}}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><strong>ប្រាក់សរុប</strong></td>
+                            <td><strong>{{order.total}}</strong></td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <br><br><br><br><br>
+    </section>
+{% endblock %}
+    
